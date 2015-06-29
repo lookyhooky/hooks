@@ -1,0 +1,6 @@
+{
+    "require": {
+        "league/plates": "3.*",
+        "slim/slim": "~2.0"
+    }
+}

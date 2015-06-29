@@ -1,0 +1,11 @@
+.vagrant
+
+public/js
+public/css
+public/fonts
+
+vendor/
+node_modules/
+bower_components/
+
+.DS_Store

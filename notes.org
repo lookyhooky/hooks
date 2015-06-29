@@ -1,0 +1,54 @@
+#+STARTUP: indent
+#+STARTUP: showall
+
+* Hooks Crane Website
+keywords necessary
+- rental
+- service
+- operated
+- company
+- operate, operating
+
+** Most Important
+- Implement a contact form and push it out.
+
+** Possible Platforms
+*** PHP, Slim, Plates
+
+*** Ruby Rails
+Hosted on RailYard. I think they could help me learn how to deploy my apps.
+Use High Voltage for static pages
+
+** Job Request
+Should be saved to the database and if submitted by a registered user
+they can view the request on their home screen. If submitted anonymously
+it should still be saved to the database.
+  - Data :: name, company, email, phone, date, comments
+
+** Data I would like to keep track of
+Job scheduling
+Invoicing
+Crane Rental Agreements
+Crane Inspection and Maintenance Documentation
+Regulation and Safety plan
+
+** Models to implement
+- User :: name, relation to company
+- Company :: name, address, phone, relation to users
+- Job :: schedule -> confirmed -> completed -> invoice -> paid
+- Crane :: CraneItem -> CraneRule -> CraneInspection
+
+** Safety Plan
+This is will be a complicated series of compounding relations
+
+Need to create a database of rules from osha and asme
+
+- Regulation :: text:text organization:string reference:string
+                I can do text for osha not asme
+- Rule :: Written by me
+          many_to_many relations_regulation
+- Inspection :: compiled from special rules that require inspection
+                frequency, relation to crane_item
+                possilbly just a special kind of rule
+- Forms :: relates crane, crane_item, and inpection_rules by frequency
+
