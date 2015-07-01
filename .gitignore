@@ -1,8 +1,10 @@
-.vagrant
+.vagrant/
+.sass-cache/
 
 public/js
 public/css
 public/fonts
+public/pdfs
 
 vendor/
 node_modules/

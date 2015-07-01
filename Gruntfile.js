@@ -28,15 +28,53 @@ module.exports = function(grunt) {
                     }
                 ]
             }
+        },
+        sass: {
+            dist: {
+                options: {
+                    style: 'expanded'
+                },
+                files: {
+                    'public/css/main.css': 'source/sass/main.scss'
+                }
+            }
+        },
+        coffee: {
+            compile: {
+                options: {
+                    sourceMaps: true
+                },
+                files: {
+                    'public/js/main.js': 'source/coffee/main.coffee'
+                }
+            }
+        },
+        watch: {
+            style: {
+                files: ['source/sass/*.scss'],
+                tasks: ['sass'],
+                options: {
+                    spawn: false
+                }
+            },
+            scripts: {
+                files: ['source/coffee/*.coffee'],
+                tasks: ['coffee'],
+                options: {
+                    spawn: false
+                }
+            }
         }
+        
     })
     
     grunt.loadNpmTasks('grunt-contrib-clean')
     grunt.loadNpmTasks('grunt-contrib-copy')
     grunt.loadNpmTasks('grunt-contrib-sass')
     grunt.loadNpmTasks('grunt-contrib-coffee')
+    grunt.loadNpmTasks('grunt-contrib-watch')
 
-    grunt.registerTask('default', ['clean', 'copy'])
+    grunt.registerTask('default', ['clean', 'copy', 'sass', 'coffee', 'watch'])
                      
 
 }
