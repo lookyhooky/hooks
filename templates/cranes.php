@@ -6,7 +6,7 @@ $this->layout('master', ['title' => 'Cranes']);
 </div>
 <div class="row">
   <div class="col-sm-12">
-    <table class="table">
+    <table class="table cranes">
       <thead>
         <tr>
           <th></th>
@@ -31,7 +31,7 @@ $this->layout('master', ['title' => 'Cranes']);
           <td>160'</td>
         </tr>
         <tr>
-          <th>Specs & Load Chart</th>
+          <th>Specs & Chart</th>
           <td><a href="/pdfs/23098_spec.pdf" target="_blank">pdf</a></td>
           <td><a href="/pdfs/L8_spec.pdf" target="_blank">pdf</a></td>
         </tr>

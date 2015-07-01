@@ -28,29 +28,38 @@ $this->layout('master', ['title' => 'Message']);
       </div>
     </div>
     <form role="form" class="form-horizontal" action="/message" method="post">
-      <div class="form-group text-center">
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="name">Name</label>
+        <div class="col-sm-10">
+          <input type="text"
+                 class="form-control"
+                 id="name" name="name"
+                 placeholder="Enter your name"
+                 value="<?=$message->get('name')?>">
+        </div>
+      </div>
+      <div class="form-group">
         <label class="control-label col-sm-2" for="email">Email</label>
         <div class="col-sm-10">
           <input type="email"
                  class="form-control"
                  id="email" name="email"
-                 placeholder="Enter email"
+                 placeholder="Enter your email"
                  value="<?=$message->get('email')?>">
         </div>
       </div>
-      <div class="form-group text-center">
+      <div class="form-group">
         <label class="control-label col-sm-2" for="subject">Subject</label>
         <div class="col-sm-10">
           <input type="text"
                  class="form-control"
                  id="subject" name="subject"
-                 placeholder="Enter subject"
+                 placeholder="Enter a subject"
                  value="<?=$message->get('subject')?>">
         </div>
       </div>
-      <div class="form-group text-center">
-        <div class="col-sm-2">
-        </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="text">Message</label>
         <div class="col-sm-10">
           <textarea rows="12"
                     class="form-control"

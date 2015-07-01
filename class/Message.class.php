@@ -2,7 +2,7 @@
 
 namespace jhooky;
 
-require('Model.class.php');
+require 'Model.class.php';
 
 class Message extends Model
 {
@@ -13,7 +13,7 @@ class Message extends Model
   public $submitted = false;
   
   public function __construct($data) {
-    $allowable = ['email', 'subject', 'text'];
+    $allowable = ['email', 'subject', 'text', 'name'];
 
     parent::__construct($allowable, $data);
     
@@ -22,6 +22,23 @@ class Message extends Model
 
   public function get_notices() {
     return $this->notices;
+  }
+
+  public function email($to) {
+    $subject = $this->get('subject');
+    if ($this->get('name') != NULL) {
+      $headers = 'From: ' . $this->get('name') . ' <' .
+                 $this->get('email') . ">\r\n";
+    } else {
+      $headers = 'From: ' . $this->get('email') . "\r\n";
+    }
+    $message = wordwrap($this->get('text'));
+
+    if (empty($subject)) {
+      $subject = 'Email from Hooks Crane';
+    }
+    
+    mail($to, $subject, $message, $headers);
   }
   
   private function validate() {
@@ -48,5 +65,7 @@ class Message extends Model
   private function email_valid_p($data) {
     return filter_var($data, FILTER_VALIDATE_EMAIL);
   }
-
+  
 }
+
+?>

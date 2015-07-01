@@ -9,13 +9,15 @@ class Model
   public function __construct($keys, $data) {
     // create the whitelist of acceptable keys
     foreach ($keys as $key) {
-      $this->properties[$key] = isset($data[$key]) ? $data[$key] : NULL;
+      $this->properties[$key] = isset($data[$key]) ?
+                                $this->clean($data[$key]) :
+                                NULL;
     }
   }
 
   public function set($property, $value) {
     if (isset($this->properties[$property])) {
-      $this->properties[$property] = $value;
+      $this->properties[$property] = $this->clean($value);
     } else {
       return NULL;
     }
@@ -35,6 +37,13 @@ class Model
       $result = $cb($property, $value);
     }
     return $result;
+  }
+
+  private function clean($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
   }
 
 }

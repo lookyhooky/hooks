@@ -1,29 +1,25 @@
 <?php
 
 require '../vendor/autoload.php';
-require '../util/tools.php';
 require '../class/Message.class.php';
 
 use \Slim\Slim as Slim;
 use \League\Plates as Plates;
-use \jhooky\tools as tools;
 
 $app = new Slim([
     'mode' => 'development'
 ]);
 
+$templates = new Plates\Engine('../templates');
+
 $app->configureMode('development', function() use ($app) {
   $app->config([
-    'log.enable' => false,
+    'log.enable' => true,
     'debug' => true
   ]);
 });
 
-$templates = new Plates\Engine('../templates');
-
 $app->get('/', function() use ($templates) {
-  //$data = ['name' => 'John'];
-  //echo $templates->render('profile', $data);
   echo $templates->render('home');
 });
 
@@ -46,7 +42,9 @@ $app->post('/message/', function() use ($app, $templates) {
 
   $message = new jhooky\Message($app->request->post());
 
+  // echo $message->valid ? 'true' : 'false';
   if ($message->valid) {
+    $message->email('john@hookscrane.com');
     echo $templates->render('/message', [
       'message' => new jhooky\Message([]),
       'notice' => ['Success!', 'Your message has been sent']
@@ -57,11 +55,6 @@ $app->post('/message/', function() use ($app, $templates) {
       'message' => $message
     ]);
   }
-  
-});
-
-$app->get('/hello/:name', function($name) {
-  echo "Hello, $name";
 });
 
 $app->run();
