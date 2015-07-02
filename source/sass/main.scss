@@ -23,6 +23,44 @@ body {
     margin-bottom: 60px;    
 }
 
+#front-page {
+    position: absolute;
+    top: 80px;
+    bottom: 0;
+    width:100%;
+    background: url(/images/crane_stamp_gray.png) no-repeat;
+    background-size: cover;
+    text-align: center;
+    h1 {
+        font-size: 6em;
+    }
+    p {
+        font-size: 2em;
+    }
+    a {
+        margin-top: 20px;
+    }
+    padding-left: 20px;
+    padding-right:20px;
+    .box {
+        display: table;
+        width: 100%;
+        height: 80%;
+    }
+    .inner {
+        display: table-cell;
+        vertical-align: middle;
+    }
+    @media screen and (max-width: 450px) {
+        h1 {
+            font-size: 4em;
+        }
+        p {
+            font-size: 1.5em
+        }
+    }
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
@@ -30,10 +68,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .borderless tbody tr td, .borderless tbody tr th {
     border: none;
-}
-
-.indent {
-    padding-left: 10px
 }
 
 .large {
@@ -44,16 +78,24 @@ h1, h2, h3, h4, h5, h6 {
     padding-bottom: 30px;
 }
 
+.narrow {
+    max-width: 600px;
+}
+
 .footer {
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     position: absolute;
     bottom: 0;
     width: 100%;
-    background-color: #ffffff;
+    background-color: transparent;
     height: 40px;
     padding: 0px;
     line-height: 40px;
+}
+
+.transparent {
+    background-color: transparent;
 }
 
 .table {

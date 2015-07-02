@@ -24,21 +24,25 @@ class Message extends Model
     return $this->notices;
   }
 
-  public function email($to) {
-    $subject = $this->get('subject');
-    if ($this->get('name') != NULL) {
-      $headers = 'From: ' . $this->get('name') . ' <' .
-                 $this->get('email') . ">\r\n";
-    } else {
-      $headers = 'From: ' . $this->get('email') . "\r\n";
-    }
-    $message = wordwrap($this->get('text'));
-
-    if (empty($subject)) {
-      $subject = 'Email from Hooks Crane';
-    }
+  public function email() {
+    $subject = '';
+    $headers = '';
+    $message = '';
     
-    mail($to, $subject, $message, $headers);
+    if ($this->get('subject') != NULL) {
+      $subject = $this->get('subject');
+    } else {
+      $subject = 'Response Request';
+    }
+    $headers .= "From: Hooks Crane Messages <webmaster@hookhook.co>\r\n";
+    if ($this->get('name') != NULL) {
+      $message .= 'By: ' . $this->get('name') . ' <' . $this->get('email') . ">\r\n\r\n";
+    } else {
+      $message .= "By: anonymous\r\n\r\n";
+    }
+    $message .= "Message:\r\n\r\n" . wordwrap($this->get('text'));
+    
+    mail('john@hookscrane.com', $subject, $message, $headers);
   }
   
   private function validate() {

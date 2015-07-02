@@ -42,9 +42,8 @@ $app->post('/message/', function() use ($app, $templates) {
 
   $message = new jhooky\Message($app->request->post());
 
-  // echo $message->valid ? 'true' : 'false';
   if ($message->valid) {
-    $message->email('john@hookscrane.com');
+    $message->email();
     echo $templates->render('/message', [
       'message' => new jhooky\Message([]),
       'notice' => ['Success!', 'Your message has been sent']

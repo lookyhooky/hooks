@@ -50,7 +50,8 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">HCS</a>
+          <a class="navbar-brand" href="/">HOOKS
+          </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -84,9 +85,7 @@
       </div><!-- .container -->
     </nav>
 
-    <div class="container">
       <?=$this->section('content')?>
-    </div>
 
     <footer class="footer">
       <div class="container text-center">
